@@ -1,0 +1,26 @@
+[package]
+name = "axum-graphql-prisma"
+version = "0.1.0"
+edition = "2021"
+# change to whatever you name your package
+default-run = "axum-graphql-prisma"
+
+
+[workspace]
+resolver = "2"
+members = ["prisma-cli"]
+
+[dependencies]
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.8", features = [
+  # See more: https://prisma.brendonovich.dev/writing-data/create#create-many
+  # 'sqlite-create-many',
+  # See more: https://prisma.brendonovich.dev/extra/migrations
+  "migrations",
+  "sqlite",
+], default-features = false }
+tokio = { version = "1.0", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+axum = "0.6.16"
+dotenv = "0.15.0"
+async-graphql = "5.0.7"
+async-graphql-axum = "5.0.7"
